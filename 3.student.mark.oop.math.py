@@ -32,8 +32,6 @@ def input_mark():
 def calculate_gpa(student_id):
     student_marks = []
     course_credits = []
-    
-    # Map courses by ID for quick credit retrieval
     credits_map = {c['idc']: c['credits'] for c in courses}
     
     for m in mark:
@@ -43,8 +41,6 @@ def calculate_gpa(student_id):
             
     if not student_marks:
         return 0.0
-
-    # NumPy weighted sum calculation
     marks_arr = np.array(student_marks)
     credits_arr = np.array(course_credits)
     
@@ -62,8 +58,6 @@ def list_students_by_gpa():
         
     for s in students:
         s['gpa'] = calculate_gpa(s['id'])
-        
-    # Sort descending by GPA
     sorted_students = sorted(students, key=lambda x: x['gpa'], reverse=True)
     
     print('\n--- Students Ranked by GPA ---')
